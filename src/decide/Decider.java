@@ -44,7 +44,20 @@ public class Decider{
     }
 
     public boolean lic5(){
-        return true;
+        /**
+         * Returns a Boolean representing if there exists at least one set of two consecutive data points,
+         * (X[i],Y[i]) and (X[j],Y[j]), such that X[j] - X[i] < 0. (where i = j-1)
+
+         * @return  Boolean representing if the condition is met or not.
+         */
+
+        boolean condition_met = false;  // Boolean to keep track if condition has been met.
+
+        for(int i = 0; i <= this.numpoints-2 && !condition_met; i++){ // Loop through all Coordinates in points[]
+            //check if points[i].x is greater than points[i+1].x for all points. Will break loop if true.
+            condition_met = (this.points[i+1].getX() < this.points[i].getX() || condition_met);
+        }
+        return condition_met;
     }
 
     public boolean lic6(){
