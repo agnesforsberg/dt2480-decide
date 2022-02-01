@@ -42,7 +42,7 @@ public class Decider{
             P1 = this.points[i];
             P2 = this.points[i + 1];
             P3 = this.points[i + 2];
-            if(!(P1.isEgal(P2) || P1.isEgal(P3))){
+            if(!(P1.isEqual(P2) || P1.isEqual(P3))){
                 angle = P1.angle(P2,P3);
                 if (angle <Math.PI - this.parameters.EPSILON || angle >Math.PI + this.parameters.EPSILON){
                     lic2_value = true;

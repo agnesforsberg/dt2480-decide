@@ -9,7 +9,7 @@ public class Coordinate {
         this.y = y;
     }
 
-    public boolean isEgal(Coordinate P){
+    public boolean isEqual(Coordinate P){
         return this.x == P.x && this.y == P.y;
     }
 
