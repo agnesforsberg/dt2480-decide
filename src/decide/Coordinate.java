@@ -9,5 +9,23 @@ public class Coordinate {
         this.y = y;
     }
 
-    // Add functions for points here
+    // Setters
+    public void setX(int x) { this.x = x; }
+
+    public void setY(int y) { this.y = y; }
+
+    // Getters
+    public int getX(){
+        return this.x;
+    }
+
+    public int getY(){
+        return this.y;
+    }
+
+
+    // Misc
+    public double distanceToCoordinate(Coordinate other){
+        return Math.sqrt(Math.pow(this.x - other.getX(), 2) + Math.pow(this.y - other.getY(), 2));
+    }
 }
