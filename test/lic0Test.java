@@ -11,15 +11,15 @@ public class lic0Test {
 
 
     @Test
-    void lic0_test0() {
-        Parameters test_params_zero = new Parameters(1.41421356237, 3.4, 4.0, 1.0, 34, 12, 3.4,
+    void lic0_test_criteria_met_on_last_point() {
+        Parameters test_params_zero = new Parameters(20.41421356237, 3.4, 4.0, 1.0, 34, 12, 3.4,
                 5, 4, 3, 2, 1, 4, 3, 2, 5, 2.03, 4.34, 3.4);
 
         Coordinate[] points_zero = new Coordinate[5];
-        points_zero[0] = new Coordinate(1, 4);
-        points_zero[1] = new Coordinate(3, 2);
-        points_zero[2] = new Coordinate(1, 3);
-        points_zero[3] = new Coordinate(4, 4);
+        points_zero[0] = new Coordinate(1, 0);
+        points_zero[1] = new Coordinate(1, 0);
+        points_zero[2] = new Coordinate(1, 0);
+        points_zero[3] = new Coordinate(1, 0);
         points_zero[4] = new Coordinate(1, 85);
 
         Decider decide = new Decider(5, points_zero, test_params_zero, new Connectors[5][5], new boolean[5][5]);
@@ -28,7 +28,7 @@ public class lic0Test {
     }
 
     @Test
-    void lic0_test1() {
+    void lic0_test_distance_exactly_length1() {
 
         Parameters test_params_one = new Parameters(1.4142135623730951, 3.4, 4.0, 1.0,
                 34, 12, 3.4, 5, 4, 3, 2, 1, 4, 3, 2,
@@ -45,7 +45,7 @@ public class lic0Test {
     }
 
     @Test
-    void lic0_test2() {
+    void lic0_test_length1_slighty_less_than_distance() {
 
         Parameters test_params_two = new Parameters(1.4142135623730950, 3.4, 4.0, 1.0,
                 34, 12, 3.4, 5, 4, 3, 2, 1, 4, 3, 2,
