@@ -24,7 +24,21 @@ public class Decider{
     }
 
     public boolean lic0(){
-        return true;
+        /**
+         * Returns a Boolean representing if there exists at least one set of two
+         * consecutive data points that are a distance greater than
+         * the length, LENGTH1, apart. (0 ≤ LENGTH1)
+
+         * @return  Boolean representing if the condition is met or not.
+         */
+
+        boolean condition_met = false;  // Boolean to keep track if condition has been met.
+
+        for(int i = 0; i <= this.numpoints-2 && !condition_met; i++){ // Loop through all Coordinates in points[]
+            //compare distance between all points i and i+1.
+            condition_met = ((this.points[i].distanceToCoordinate(this.points[i+1]) > this.parameters.LENGTH1) || condition_met);
+        }
+        return condition_met;
     }
 
     public boolean lic1(){
