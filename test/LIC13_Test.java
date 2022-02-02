@@ -28,7 +28,7 @@ public class LIC8_Test {
         assertFalse(decide.lic13());
     }
     void testLIC13_1() {
-        //example that does work because of 2nd condition 
+        //example that does not work because of 2nd condition 
         Parameters p = new Parameters(0, 5, 0, 10, 0, 0, 0,
                 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 2, 0);
 

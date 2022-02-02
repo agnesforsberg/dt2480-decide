@@ -13,7 +13,7 @@ public class Decider{
         this.points = points;
         this.parameters = parameters;
         this.lcm = lcm;
-        this.pum = this.pum;
+        this.pum = pum;
         // to put all testresults in
         this.cmv = new boolean[15];
     }
@@ -123,7 +123,7 @@ circle of radius RADIUS2. Both parts must be true for the LIC to be true. */
             if (R>this.parameters.RADIUS1){
                 condition1=true;
             }
-            if (R<this.parameters.RADIUS2){
+            if (R<=this.parameters.RADIUS2){
                 condition2=true;
             }
             i++;
