@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class LIC8_Test {
     @Test
-	@Test
 	void testLIC8_0() {
         //example that does not work
         Parameters p = new Parameters(0, 5, 0, 10, 0, 0, 0,
@@ -27,6 +26,7 @@ public class LIC8_Test {
 
         assertFalse(decide.lic8());
     }
+    @Test
     void testLIC8_1() {
         //example that does work obtuse angle case 
         Parameters p = new Parameters(0, 5, 0, 10, 0, 0, 0,
@@ -44,7 +44,7 @@ public class LIC8_Test {
 
         assertTrue(decide.lic8());
     }
-
+    @Test
     void testLIC8_2() {
         //example that does work acute angle case 
         Parameters p = new Parameters(0, 5, 0, 10, 0, 0, 0,
@@ -62,7 +62,7 @@ public class LIC8_Test {
 
         assertTrue(decide.lic8());
     }
-
+    @Test
     void testLIC8_3() {
         //example that does work with 2 identic points
         Parameters p = new Parameters(0, 5, 0, 10, 0, 0, 0,
