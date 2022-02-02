@@ -49,4 +49,17 @@ public class Coordinate {
     public double area(Coordinate P1, Coordinate P2){
         return Math.abs(0.5*((P1.x-this.x)*(P2.y-this.y)-(P2.x-this.x)*(P1.y-this.y)));
     }
+  
+    public int getQuadrant() {
+        if(this.x >= 0 && this.y >= 0){
+            return 1;
+        } else if(this.x < 0 && this.y >= 0){
+            return 2;
+        }else if(this.x <= 0 && this.y < 0){
+            return 3;
+        }else {
+            // c.x < 0 && c.y < 0
+            return 4;
+        }
+    }
 }
