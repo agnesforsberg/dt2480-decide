@@ -68,7 +68,28 @@ public class Decider{
     }
 
     public boolean lic3(){
-        return true;
+        /*If there exists at least one set of three consecutive data points that are the vertices of a triangle
+with area greater than AREA1 */
+
+        boolean condition = false;
+        int i = 0;
+        Coordinate P1;
+        Coordinate P2;
+        Coordinate P3;
+        double area;
+        while ( i < this.numpoints-2 && !condition ){
+            P1 = this.points[i];
+            P2 = this.points[i + 1];
+            P3 = this.points[i + 2];
+            double a = P1.area(P2,P3);
+            if (a>=this.parameters.AREA1) {
+                condition = true;
+            }
+            i++;
+            
+        }
+        return condition;
+
     }
 
     public boolean lic4(){
