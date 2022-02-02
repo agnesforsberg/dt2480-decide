@@ -49,4 +49,14 @@ class CoordinateTest {
         assertEquals(c.getX(), 1);
         assertEquals(c.getY(), 2);
     }
+
+    @Test
+    void isEqual() {
+        Coordinate c1 = new Coordinate(1, 2);
+        Coordinate c2 = new Coordinate(1, 2);
+        Coordinate c3 = new Coordinate(1,3);
+
+        assertTrue(c1.isEqual(c2));
+        assertFalse(c1.isEqual(c3));
+    }
 }

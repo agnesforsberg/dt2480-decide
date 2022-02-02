@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LIC8_Test {
-    @Test
 	@Test
 	void testLIC8_0() {
         //example that does not work
