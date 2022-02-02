@@ -7,6 +7,7 @@ public class Decider{
     private Connectors[][] lcm;
     private boolean[][] pum;
     private boolean[] cmv;
+    private boolean[] fuv;
 
     public Decider(int numpoints, Coordinate[] points, Parameters parameters, Connectors[][] lcm, boolean[][] pum){
         this.numpoints = numpoints;
@@ -16,10 +17,99 @@ public class Decider{
         this.pum = pum;
         // to put all testresults in
         this.cmv = new boolean[15];
+        this.fuv = new boolean[15];
     }
 
     public boolean decide(){
-        //TODO run all LICs
+        /**
+         * populates all the necessary data structures for launch to do its decision.
+
+         * @return  Boolean representing if interception missile should be launched or not.
+         */
+
+        populateCMV(); // Populates the CMV
+        populatePUM(); // Populates the PUM
+        populateFUV(); // Populates the FUV
+
+        return launch();
+
+    }
+
+    public void populateCMV(){
+        /**
+         * runs all LICs and populates the CMV.
+         */
+        this.cmv[0] = lic0();
+        this.cmv[1] = lic1();
+        this.cmv[2] = lic2();
+        this.cmv[3] = lic3();
+        this.cmv[4] = lic4();
+        this.cmv[5] = lic5();
+        this.cmv[6] = lic6();
+        this.cmv[7] = lic7();
+        this.cmv[8] = lic8();
+        this.cmv[9] = lic9();
+        this.cmv[10] = lic10();
+        this.cmv[11] = lic11();
+        this.cmv[12] = lic12();
+        this.cmv[13] = lic13();
+        this.cmv[14] = lic14();
+    }
+
+    public void populatePUM(){
+        /**
+         The Conditions Met Vector (CMV) is used in conjunction with the Logical Connector
+         Matrix (LCM) to form the Preliminary Unlocking Matrix (PUM). The entries in the LCM represent
+         the logical connectors to be used between pairs of LICs to determine the corresponding entry in
+         the PUM, i.e. LCM[i,j] represents the boolean operator to be applied to CMV[i] and CMV[j].
+         PUM[i,j] is set according to the result of this operation.
+
+         If LCM[i,j] is NOTUSED, then PUM[i,j]
+         should be set to true.
+
+         If LCM[i,j] is ANDD, PUM[i,j] should be set to true only if (CMV[i] AND
+         CMV[j]) is true.
+
+         If LCM[i,j] is ORR, PUM[i,j] should be set to true if (CMV[i] OR CMV[j]) is
+         true.
+
+         (Note that the LCM is symmetric, i.e. LCM[i,j]=LCM[j,i] for all i and j.)
+         */
+
+        for(int i = 0; i <= 14; i++){ // Loop through LCM.
+            for(int j = i; i <= 14; i++){
+                switch(this.lcm[i][j]){ // Switch to do the proper operations &&, || or auto true.
+                    case ANDD:
+                        this.pum[i][j] = (this.cmv[i] && this.cmv[j]);
+                        break;
+
+                    case ORR:
+                        this.pum[i][j] = (this.cmv[i] || this.cmv[j]);
+                        break;
+
+                    case NOTUSED:
+                        this.pum[i][j] = true;
+                        break;
+
+                    default: // If something is not configured correctly in the LCM that PUM position is set to false.
+                        this.pum[i][j] = false;
+                        break;
+                }
+                this.pum[j][i] = this.pum[i][j]; //Symetrize Matrix
+            }
+        }
+    }
+
+    public void populateFUV(){
+        //Please populate FUV, thank you.
+    }
+
+    public boolean launch(){
+        /**
+         * Loops through the FUV to check if all values in the FUV is set to true or not.
+
+         * @return  Boolean representing if all values in the FUV is set to true or not.
+         */
         return true;
     }
 
