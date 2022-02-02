@@ -44,8 +44,25 @@ public class Decider{
     }
 
     public boolean lic1(){
-        return true;
+        /**
+         * There exists at least one set of three consecutive data points that cannot all be contained
+         * within or on a circle of radius RADIUS1. (0 ≤ RADIUS1)
+         *
+         * @return Boolean representing if the condition is met or not.
+         */
+        boolean condition_met;
+        for(int i = 0; i < this.numpoints-2; i++){
+            double center_x = (double) (this.points[i].getX() +this.points[i+1].getX() + this.points[i+2].getX())/3;
+            double center_y = (double) (this.points[i].getY() +this.points[i+1].getY() + this.points[i+2].getY())/3;
+            condition_met = !(this.points[i].coordinateInOrOnCircle(this.parameters.RADIUS1, center_x, center_y) &&
+                    this.points[i+1].coordinateInOrOnCircle(this.parameters.RADIUS1, center_x, center_y) &&
+                    this.points[i+2].coordinateInOrOnCircle(this.parameters.RADIUS1, center_x, center_y));
+
+            if(condition_met) return true;
+        }
+        return false;
     }
+
 
     public boolean lic2(){
         boolean lic2_value = false;
@@ -94,6 +111,15 @@ with area greater than AREA1 */
 
     }
 
+
+    /** Returns a Boolean representing if there exists at least one set of Q_PTS consecutive data points
+     * that lie in more than QUADS quadrants. Where there is ambiguity as to which quadrant contains a given point,
+     * priority of decision will be by quadrant number, i.e., I, II, III, IV. For example, the data point (0,0)
+     * is in quadrant I, the point (-l,0) is in quadrant II, the point (0,-l) is in quadrant III, the point
+     * (0,1) is in quadrant I and the point (1,0) is in quadrant I.
+     * (2 ≤ Q_PTS ≤ NUMPOINTS), (1 ≤ QUADS ≤ 3)
+     *
+     * @return  Boolean representing if the condition is met or not.*/
     public boolean lic4(){
         // false in case of invalid parameters
         if(this.parameters.Q_PTS < 2 || this.parameters.Q_PTS > numpoints){
@@ -150,8 +176,44 @@ with area greater than AREA1 */
     }
 
     public boolean lic6(){
-        return true;
+        /***
+         * There exists at least one set of N PTS consecutive data points such that at least one of the
+         * points lies a distance greater than DIST from the line joining the first and last of these N PTS
+         * points. If the first and last points of these N PTS are identical, then the calculated distance
+         * to compare with DIST will be the distance from the coincident point to all other points of
+         * the N PTS consecutive points. The condition is not met when NUMPOINTS < 3.
+         * (3 ≤ N PTS ≤ NUMPOINTS), (0 ≤ DIST)
+         *
+         * @return Boolean representing if the condition is met or not.
+         */
+
+        if(this.numpoints < 3) return false;
+
+        boolean condition_met;
+        double distance;
+        for(int i = 0; i < this.numpoints-(this.parameters.N_PTS-1); i++){
+            if(!this.points[i].isEqual(this.points[i + this.parameters.N_PTS-1])){
+                int line_x = this.points[i + this.parameters.N_PTS-1].getX() - this.points[i].getX();
+                int line_y = this.points[i + this.parameters.N_PTS-1].getY() - this.points[i].getY();
+                double line_m = Math.sqrt((line_x*line_x) + (line_y*line_y));
+                for(int j = i+1; j < i+this.parameters.N_PTS-1; j++){
+                    distance = Math.abs(line_x*(this.points[i].getY() - this.points[j].getY()) - line_y*(this.points[i].getX() - this.points[j].getX()))/line_m;
+                    condition_met = distance > this.parameters.DIST;
+                    if(condition_met) return true;
+                }
+            }
+            else{
+                for(int j = i+1; j < i+this.parameters.N_PTS-1; j++){
+                    distance = this.points[j].distanceToCoordinate(this.points[i]);
+                    condition_met = distance > this.parameters.DIST;
+                    if(condition_met) return true;
+                }
+            }
+        }
+
+        return false;
     }
+
 
     public boolean lic7(){
         boolean value_lic7 = false;
@@ -263,11 +325,66 @@ radius RADIUS1. The condition is not met when NUMPOINTS < 5 */
     }
 
     public boolean lic10(){
-        return true;
+        /**
+         * Returns a Boolean representing if there exists at least one set of three data points separated by
+         * exactly E PTS and F PTS consecutive intervening points, respectively, that are the vertices of a
+         * triangle with area greater than AREA1. The condition is not met when NUMPOINTS < 5.
+         * 1 ≤ E PTS, 1 ≤ F PTS
+         * E PTS+F PTS ≤ NUMPOINTS−3
+         *
+         *  @return  Boolean representing if the condition is met or not.
+         */
+
+        //Error handling
+        if((this.parameters.E_PTS + this.parameters.F_PTS > this.numpoints) || (this.parameters.E_PTS < 1) || (this.parameters.F_PTS < 1)){
+            return false;
+            //Maybe throw an error.
+        }
+        if (this.numpoints < 5){ // The condition is not met when NUMPOINTS < 5
+            return false;
+        }
+
+        boolean condition_met = false;      // Boolean to keep track if condition has been met.
+        int e = this.parameters.E_PTS;      // Just a shorthand for convenience.
+        int f = this.parameters.F_PTS;      // Just a shorthand for convenience.
+        double a, b, c, s, triangle_area;   // Used to keep calculation of the area of the Triangle readable.
+
+
+        for(int i = 0; i <= this.numpoints-3-e-f && !condition_met; i++){ // Loop through all suitable points.
+
+            // Perform Heron's formula to calculate Area of Triangle
+            a = this.points[i].distanceToCoordinate(this.points[i+e+1]);
+            b = this.points[i].distanceToCoordinate(this.points[i+e+f+2]);
+            c = this.points[i+e+1].distanceToCoordinate(this.points[i+e+f+2]);
+            s = (a + b + c)/2;
+
+            triangle_area = Math.sqrt(s*(s - a)*(s - b)*(s - c));
+            System.out.println(a + " " + b + " " + c);
+            System.out.println(i + ", " + (i+e+1) + ", " + (i+e+f+2) + ": " + triangle_area);
+
+            condition_met = (triangle_area > this.parameters.AREA1 || condition_met);
+        }
+        return condition_met;
+
     }
 
     public boolean lic11(){
-        return true;
+        /***
+         * There exists at least one set of two data points, (X[i],Y[i]) and (X[j],Y[j]), separated by
+         * exactly G PTS consecutive intervening points, such that X[j] - X[i] < 0. (where i < j ) The
+         * condition is not met when NUMPOINTS < 3.
+         * 1 ≤ G PTS ≤ NUMPOINTS−2
+         *
+         * @return Boolean representing if the condition is met or not.
+         */
+        if(this.numpoints < 3) return false;
+
+        boolean condition_met;
+        for(int i = 0; i < this.numpoints - (this.parameters.G_PTS + 1); i++){
+            condition_met = (this.points[i+ this.parameters.G_PTS+1].getX() - this.points[i].getX()) < 0;
+            if(condition_met) return true;
+        }
+        return false;
     }
 
     public boolean lic12(){
