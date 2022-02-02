@@ -23,7 +23,7 @@ public class LIC8_Test {
         points[4] = new Coordinate(2, 3);
         points[5] = new Coordinate(3, 3);
 
-        Decider decide = new Decider(6, points, p, new Connectors[6][6], new boolean[6][6]);
+        Decider decide = new Decider(6, points, p, new Connectors[6][6], new boolean[6][6], new boolean[6]);
 
         assertFalse(decide.lic8());
     }
@@ -41,7 +41,7 @@ public class LIC8_Test {
         points[4] = new Coordinate(2, 3);
         points[5] = new Coordinate(3, 40);
 
-        Decider decide = new Decider(6, points, p, new Connectors[6][6], new boolean[6][6]);
+        Decider decide = new Decider(6, points, p, new Connectors[6][6], new boolean[6][6], new boolean[6]);
 
         assertTrue(decide.lic8());
     }
@@ -59,7 +59,7 @@ public class LIC8_Test {
         points[4] = new Coordinate(10, 20);
         points[5] = new Coordinate(3, 3);
 
-        Decider decide = new Decider(6, points, p, new Connectors[6][6], new boolean[6][6]);
+        Decider decide = new Decider(6, points, p, new Connectors[6][6], new boolean[6][6], new boolean[6]);
 
         assertTrue(decide.lic8());
     }
@@ -77,7 +77,7 @@ public class LIC8_Test {
         points[4] = new Coordinate(10, 20);
         points[5] = new Coordinate(3, 3);
 
-        Decider decide = new Decider(6, points, p, new Connectors[6][6], new boolean[6][6]);
+        Decider decide = new Decider(6, points, p, new Connectors[6][6], new boolean[6][6], new boolean[6]);
 
         assertTrue(decide.lic8());
     }

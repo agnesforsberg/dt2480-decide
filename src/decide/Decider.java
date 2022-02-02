@@ -7,16 +7,19 @@ public class Decider{
     private Connectors[][] lcm;
     private boolean[][] pum;
     private boolean[] cmv;
+    private boolean[] puv;
     private boolean[] fuv;
 
     static double PI = 3.1415926535;
 
-    public Decider(int numpoints, Coordinate[] points, Parameters parameters, Connectors[][] lcm, boolean[][] pum){
+
+    public Decider(int numpoints, Coordinate[] points, Parameters parameters, Connectors[][] lcm, boolean[][] pum, boolean[] puv){
         this.numpoints = numpoints;
         this.points = points;
         this.parameters = parameters;
         this.lcm = lcm;
         this.pum = pum;
+        this.puv = puv;
         // to put all testresults in
         this.cmv = new boolean[15];
         this.fuv = new boolean[15];
@@ -102,17 +105,43 @@ public class Decider{
         }
     }
 
-    public void populateFUV(){
-        //Please populate FUV, thank you.
-    }
-
     public boolean launch(){
         /**
          * Loops through the FUV to check if all values in the FUV is set to true or not.
 
          * @return  Boolean representing if all values in the FUV is set to true or not.
          */
+        for(int i = 0; i < fuv.length; i++){
+            if(!fuv[i]) return false;
+        }
         return true;
+    }
+
+    public void populateFUV(){
+        /**
+         * The Final Unlocking Vector (FUV) is generated from the Preliminary Unlocking Matrix (PUM). The
+         * input PUV indicates whether the corresponding LIC is to be considered as a factor in signaling
+         * interceptor launch.
+         *
+         * FUV[i] should be set to true if PUV[i] is false (indicating that the associated
+         * LIC should not hold back launch) or if all elements in PUM row i are true
+         */
+        boolean entire_row_true;
+        for(int i = 0; i < puv.length; i++){
+            if(!puv[i]){
+                fuv[i] = true;
+            }else{
+                entire_row_true = true;
+                for(int j = 0; j < pum[i].length; j++){
+                    if(!pum[i][j]){
+                        entire_row_true = false;
+                        fuv[i] = false;
+                        break;
+                    }
+                }
+                if(entire_row_true) fuv[i] = true;
+            }
+        }
     }
 
     public boolean lic0(){

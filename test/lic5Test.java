@@ -18,7 +18,7 @@ class lic5Test {
         test_points[2] = new Coordinate(4, 5);
         test_points[3] = new Coordinate(3, 1);
 
-        Decider test_decider = new Decider(4, test_points, test_param, new Connectors[4][4],new boolean[4][4]);
+        Decider test_decider = new Decider(4, test_points, test_param, new Connectors[4][4],new boolean[4][4], new boolean[4]);
 
         assertTrue(test_decider.lic5());
     }
@@ -34,7 +34,7 @@ class lic5Test {
         test_points[2] = new Coordinate(1, 5);
         test_points[3] = new Coordinate(5, 1);
 
-        Decider test_decider = new Decider(4, test_points, test_param, new Connectors[4][4],new boolean[4][4]);
+        Decider test_decider = new Decider(4, test_points, test_param, new Connectors[4][4],new boolean[4][4], new boolean[4]);
 
         assertTrue(test_decider.lic5());
     }
@@ -50,7 +50,7 @@ class lic5Test {
         test_points[2] = new Coordinate(2, 5);
         test_points[3] = new Coordinate(5, 1);
 
-        Decider test_decider = new Decider(4, test_points, test_param, new Connectors[4][4],new boolean[4][4]);
+        Decider test_decider = new Decider(4, test_points, test_param, new Connectors[4][4],new boolean[4][4], new boolean[4]);
 
         assertFalse(test_decider.lic5());
     }

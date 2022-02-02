@@ -22,7 +22,7 @@ public class lic0Test {
         points_zero[3] = new Coordinate(1, 0);
         points_zero[4] = new Coordinate(1, 85);
 
-        Decider decide = new Decider(5, points_zero, test_params_zero, new Connectors[5][5], new boolean[5][5]);
+        Decider decide = new Decider(5, points_zero, test_params_zero, new Connectors[5][5], new boolean[5][5], new boolean[5]);
 
         assertTrue(decide.lic0());
     }
@@ -39,7 +39,7 @@ public class lic0Test {
         points_one[1] = new Coordinate(1, 1);
         points_one[2] = new Coordinate(1, 0);
 
-        Decider decide = new Decider(3, points_one, test_params_one, new Connectors[3][3], new boolean[3][3]);
+        Decider decide = new Decider(3, points_one, test_params_one, new Connectors[3][3], new boolean[3][3], new boolean[5]);
 
         assertFalse(decide.lic0());
     }
@@ -56,7 +56,7 @@ public class lic0Test {
         points_two[1] = new Coordinate(1, 1);
         points_two[2] = new Coordinate(1, 0);
 
-        Decider decide = new Decider(3, points_two, test_params_two, new Connectors[3][3], new boolean[3][3]);
+        Decider decide = new Decider(3, points_two, test_params_two, new Connectors[3][3], new boolean[3][3], new boolean[5]);
 
         assertTrue(decide.lic0());
     }
