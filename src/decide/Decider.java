@@ -131,8 +131,44 @@ with area greater than AREA1 */
     }
 
     public boolean lic6(){
-        return true;
+        /***
+         * There exists at least one set of N PTS consecutive data points such that at least one of the
+         * points lies a distance greater than DIST from the line joining the first and last of these N PTS
+         * points. If the first and last points of these N PTS are identical, then the calculated distance
+         * to compare with DIST will be the distance from the coincident point to all other points of
+         * the N PTS consecutive points. The condition is not met when NUMPOINTS < 3.
+         * (3 ≤ N PTS ≤ NUMPOINTS), (0 ≤ DIST)
+         *
+         * @return Boolean representing if the condition is met or not.
+         */
+
+        if(this.numpoints < 3) return false;
+
+        boolean condition_met;
+        double distance;
+        for(int i = 0; i < this.numpoints-(this.parameters.N_PTS-1); i++){
+            if(!this.points[i].isEqual(this.points[i + this.parameters.N_PTS-1])){
+                int line_x = this.points[i + this.parameters.N_PTS-1].getX() - this.points[i].getX();
+                int line_y = this.points[i + this.parameters.N_PTS-1].getY() - this.points[i].getY();
+                double line_m = Math.sqrt((line_x*line_x) + (line_y*line_y));
+                for(int j = i+1; j < i+this.parameters.N_PTS-1; j++){
+                    distance = Math.abs(line_x*(this.points[i].getY() - this.points[j].getY()) - line_y*(this.points[i].getX() - this.points[j].getX()))/line_m;
+                    condition_met = distance > this.parameters.DIST;
+                    if(condition_met) return true;
+                }
+            }
+            else{
+                for(int j = i+1; j < i+this.parameters.N_PTS-1; j++){
+                    distance = this.points[j].distanceToCoordinate(this.points[i]);
+                    condition_met = distance > this.parameters.DIST;
+                    if(condition_met) return true;
+                }
+            }
+        }
+
+        return false;
     }
+
 
     public boolean lic7(){
         boolean value_lic7 = false;
