@@ -1,2 +1,4 @@
 .idea
 out
+lib/junit-platform-console-standalone-1.8.2.jar
+.vscode/settings.json
