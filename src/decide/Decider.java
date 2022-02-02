@@ -57,7 +57,7 @@ public class Decider{
         Coordinate P2;
         int i = 0;
         if(this.parameters.K_PTS >= 1){
-            while(!false && i+ this.parameters.K_PTS  < this.numpoints -1){
+            while(!value_lic7 && i+ this.parameters.K_PTS  < this.numpoints -1){
                 P1 = this.points[i];
                 P2 = this.points[i+this.parameters.K_PTS +1];
                 if(P1.dist(P2) > this.parameters.LENGTH1){
