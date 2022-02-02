@@ -13,7 +13,8 @@ public class Main {
         Parameters parameters = new Parameters(1.0, 1.0, 1.0, 1.0, 1, 1, 1.0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.0, 1.0, 1.0);
         Connectors[][] lcm = new Connectors[15][15];
         boolean[][] pum = new boolean[15][15];
-        Decider decider = new Decider(numpoints, points, parameters, lcm, pum);
+        boolean[] puv = new boolean[15];
+        Decider decider = new Decider(numpoints, points, parameters, lcm, pum, puv);
         boolean decision = decider.decide();
 
         System.out.println(decision);

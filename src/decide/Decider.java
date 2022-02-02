@@ -7,19 +7,52 @@ public class Decider{
     private Connectors[][] lcm;
     private boolean[][] pum;
     private boolean[] cmv;
+    private boolean[] puv;
+    private boolean[] fuv;
 
-    public Decider(int numpoints, Coordinate[] points, Parameters parameters, Connectors[][] lcm, boolean[][] pum){
+    public Decider(int numpoints, Coordinate[] points, Parameters parameters, Connectors[][] lcm, boolean[][] pum, boolean[] puv){
         this.numpoints = numpoints;
         this.points = points;
         this.parameters = parameters;
         this.lcm = lcm;
         this.pum = pum;
+        this.puv = puv;
         // to put all testresults in
         this.cmv = new boolean[15];
+        this.fuv = new boolean[15];
     }
 
     public boolean decide(){
         //TODO run all LICs
+        calculate_fuv();
+        return launch_decision();
+    }
+
+    public void calculate_fuv(){
+        //TODO: Add test cases for the fuv
+        boolean entire_row_true;
+        for(int i = 0; i < puv.length; i++){
+            if(!puv[i]){
+                fuv[i] = true;
+            }else{
+                entire_row_true = true;
+                for(int j = 0; j < pum[i].length; j++){
+                    if(!pum[i][j]){
+                        entire_row_true = false;
+                        fuv[i] = false;
+                        break;
+                    }//TODO:Check if this is row, or column check
+                }
+                if(entire_row_true) fuv[i] = true;
+            }
+        }
+    }
+
+    public boolean launch_decision(){
+        //TODO: Add test cases for launch decision
+        for(int i = 0; i < fuv.length; i++){
+            if(!fuv[i]) return false;
+        }
         return true;
     }
 
