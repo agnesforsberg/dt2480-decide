@@ -8,6 +8,8 @@ public class Decider{
     private boolean[][] pum;
     private boolean[] cmv;
 
+    static double PI = 3.1415926535;
+
     public Decider(int numpoints, Coordinate[] points, Parameters parameters, Connectors[][] lcm, boolean[][] pum){
         this.numpoints = numpoints;
         this.points = points;
@@ -282,8 +284,44 @@ radius RADIUS1. The condition is not met when NUMPOINTS < 5 */
         return condition;
     }
 
+    /**Returns a Boolean representing if there exists at least one set of three data points separated by exactly C PTS and D PTS
+     consecutive intervening points, respectively, that form an angle such that:
+     angle < (PI−EPSILON)
+     or
+     angle > (PI+EPSILON)
+     The second point of the set of three points is always the vertex of the angle. If either the first
+     point or the last point (or both) coincide with the vertex, the angle is undefined and the LIC
+     is not satisfied by those three points. When NUMPOINTS < 5, the condition is not met.
+     1 ≤ C PTS, 1 ≤ D PTS
+     C PTS+D PTS ≤ NUMPOINTS−3
+
+     @return  Boolean representing if the condition is met or not**/
     public boolean lic9(){
-        return true;
+        // False if preconditions not met
+        if(numpoints < 5 || this.parameters.C_PTS < 1 || this.parameters.D_PTS < 1 ||
+                (this.parameters.C_PTS + this.parameters.D_PTS) > (numpoints - 3)){
+            return false;
+        }
+
+        Coordinate x, y, z;
+        double angle;
+        int c = this.parameters.C_PTS;
+        int d = this.parameters.D_PTS;
+        double epsilon = this.parameters.EPSILON;
+
+        for(int i = 0; i < (numpoints - c - d - 2); i++){
+            x = points[i];
+            y = points[i+c+1];
+            z = points[i+c+d+2];
+            if(!y.isEqual(x) && !y.isEqual(z)){
+                angle = y.angle(x, z);
+                if(angle < (PI - epsilon) || angle > (PI + epsilon)){
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     public boolean lic10(){
