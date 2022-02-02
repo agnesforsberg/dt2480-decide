@@ -39,7 +39,7 @@ public class LIC3_Test {
         points[3] = new Coordinate(20, 0);
         points[4] = new Coordinate(0, 20);
 
-        Decider decide = new Decider(5, points, p, new Connectors[5][5], new boolean[5][5]);
+        Decider decide = new Decider(5, points, test_params, new Connectors[5][5], new boolean[5][5]);
 
         assertTrue(decide.lic3());
     }
