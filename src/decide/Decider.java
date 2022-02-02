@@ -151,7 +151,38 @@ public class Decider{
         return true;
     }
 
+    /**Returns a Boolean representing if there exists at least one set of three data points, separated by exactly E PTS
+     and F PTS consecutive intervening points, respectively, that are the vertices of a triangle with area greater
+     than AREA1. In addition, there exist three data points (which can be the same or different
+     from the three data points just mentioned) separated by exactly E PTS and F PTS consecutive intervening points,
+     respectively, that are the vertices of a triangle with area less than
+     AREA2. Both parts must be true for the LIC to be true. The condition is not met when
+     NUMPOINTS < 5.
+     0 ≤ AREA2
+
+     @return  Boolean representing if the condition is met or not**/
     public boolean lic14(){
-        return true;
+        if(numpoints < 5){
+            return false;
+        }
+
+        int e = this.parameters.E_PTS;
+        int f = this.parameters.F_PTS;
+
+        boolean firstCriteria = false;
+        boolean secondCriteria = false;
+
+        for(int i = 0; i < (numpoints - e - f - 2); i++){
+            double area = points[i].triangleArea(points[i+e+1], points[i+e+f+2]);
+
+            if(area > this.parameters.AREA1){
+                firstCriteria = true;
+            }
+            if(area < this.parameters.AREA2){
+                secondCriteria = true;
+            }
+        }
+
+        return firstCriteria && secondCriteria;
     }
 }

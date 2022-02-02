@@ -57,4 +57,13 @@ public class Coordinate {
             return 4;
         }
     }
+
+    public double triangleArea(Coordinate c1, Coordinate c2){
+        // Calculated using Heron's formula
+        double cc1 = dist(c1);
+        double cc2 = dist(c2);
+        double c1c2 = c1.dist(c2);
+        double s = (cc1 + cc2 + c1c2)/2;
+        return Math.sqrt(s*(s-cc1)*(s-cc2)*(s-c1c2));
+    }
 }
