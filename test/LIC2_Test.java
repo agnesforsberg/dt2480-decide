@@ -21,7 +21,7 @@ public class LIC2_Test {
         points[3] = new Coordinate(4, 4);
         points[4] = new Coordinate(1, 85);
 
-        Decider decide = new Decider(5, points, test_params, new Connectors[5][5], new boolean[5][5]);
+        Decider decide = new Decider(5, points, test_params, new Connectors[5][5], new boolean[5][5], new boolean[5]);
 
         assertFalse(decide.lic2());
     }
@@ -38,7 +38,7 @@ public class LIC2_Test {
         points[3] = new Coordinate(4, 4);
         points[4] = new Coordinate(1, 85);
 
-        Decider decide = new Decider(5, points, test_params, new Connectors[5][5], new boolean[5][5]);
+        Decider decide = new Decider(5, points, test_params, new Connectors[5][5], new boolean[5][5], new boolean[5]);
 
         assertTrue(decide.lic2());
     }
@@ -55,7 +55,7 @@ public class LIC2_Test {
         points[3] = new Coordinate(4, 4);
         points[4] = new Coordinate(1, 85);
 
-        Decider decide = new Decider(5, points, test_params, new Connectors[5][5], new boolean[5][5]);
+        Decider decide = new Decider(5, points, test_params, new Connectors[5][5], new boolean[5][5], new boolean[5]);
 
         assertTrue(decide.lic2());
     }
@@ -69,7 +69,7 @@ public class LIC2_Test {
         points[0] = new Coordinate(1, 4);
         points[1] = new Coordinate(3, 2);
 
-        Decider decide = new Decider(2, points, test_params, new Connectors[5][5], new boolean[5][5]);
+        Decider decide = new Decider(2, points, test_params, new Connectors[5][5], new boolean[5][5], new boolean[5]);
 
         assertFalse(decide.lic2());
     }
@@ -84,7 +84,7 @@ public class LIC2_Test {
         points[1] = new Coordinate(3, 2);
         points[2] = new Coordinate(3, 2);
 
-        Decider decide = new Decider(3, points, test_params, new Connectors[5][5], new boolean[5][5]);
+        Decider decide = new Decider(3, points, test_params, new Connectors[5][5], new boolean[5][5], new boolean[5]);
 
         assertFalse(decide.lic2());
     }

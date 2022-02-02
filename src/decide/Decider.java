@@ -24,12 +24,33 @@ public class Decider{
 
     public boolean decide(){
         //TODO run all LICs
-        calculate_fuv();
-        return launch_decision();
+        populateFUV();
+        return launch();
     }
 
-    public void calculate_fuv(){
-        //TODO: Add test cases for the fuv
+
+
+    public boolean launch(){
+        /**
+         * Loops through the FUV to check if all values in the FUV is set to true or not.
+
+         * @return  Boolean representing if all values in the FUV is set to true or not.
+         */
+        for(int i = 0; i < fuv.length; i++){
+            if(!fuv[i]) return false;
+        }
+        return true;
+    }
+
+    public void populateFUV(){
+        /**
+         * The Final Unlocking Vector (FUV) is generated from the Preliminary Unlocking Matrix (PUM). The
+         * input PUV indicates whether the corresponding LIC is to be considered as a factor in signaling
+         * interceptor launch.
+         *
+         * FUV[i] should be set to true if PUV[i] is false (indicating that the associated
+         * LIC should not hold back launch) or if all elements in PUM row i are true
+         */
         boolean entire_row_true;
         for(int i = 0; i < puv.length; i++){
             if(!puv[i]){
@@ -41,19 +62,11 @@ public class Decider{
                         entire_row_true = false;
                         fuv[i] = false;
                         break;
-                    }//TODO:Check if this is row, or column check
+                    }
                 }
                 if(entire_row_true) fuv[i] = true;
             }
         }
-    }
-
-    public boolean launch_decision(){
-        //TODO: Add test cases for launch decision
-        for(int i = 0; i < fuv.length; i++){
-            if(!fuv[i]) return false;
-        }
-        return true;
     }
 
     public boolean lic0(){
