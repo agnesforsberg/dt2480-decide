@@ -13,7 +13,7 @@ public class Decider{
         this.points = points;
         this.parameters = parameters;
         this.lcm = lcm;
-        this.pum = this.pum;
+        this.pum = pum;
         // to put all testresults in
         this.cmv = new boolean[15];
     }
@@ -46,7 +46,25 @@ public class Decider{
     }
 
     public boolean lic2(){
-        return true;
+        boolean lic2_value = false;
+        int i = 0;
+        Coordinate P1;
+        Coordinate P2;
+        Coordinate P3;
+        double angle;
+        while (!lic2_value && i < this.numpoints-2){
+            P1 = this.points[i];
+            P2 = this.points[i + 1];
+            P3 = this.points[i + 2];
+            if(!(P1.isEqual(P2) || P1.isEqual(P3))){
+                angle = P1.angle(P2,P3);
+                if (angle <Math.PI - this.parameters.EPSILON || angle >Math.PI + this.parameters.EPSILON){
+                    lic2_value = true;
+                }
+            };
+            i++;
+        };
+        return lic2_value;
     }
 
     public boolean lic3(){
