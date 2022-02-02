@@ -10,8 +10,8 @@ public class Coordinate {
         this.x = x;
         this.y = y;
     }
-
-    // Setters
+  
+      // Setters
     public void setX(int x) { this.x = x; }
 
     public void setY(int y) { this.y = y; }
@@ -25,8 +25,8 @@ public class Coordinate {
         return this.y;
     }
 
-    public boolean isEqual(Coordinate c){
-        return this.x == c.x && this.y == c.y;
+    public boolean isEqual(Coordinate P){
+        return this.x == P.x && this.y == P.y;
     }
 
     public double dist(Coordinate P){
@@ -34,9 +34,6 @@ public class Coordinate {
     }
 
     public double angle(Coordinate P1, Coordinate P2){
-        // I think this calculation is wrong? I got the wrong result for a straight line.
-        // double scal  = (P1.x-this.x)*(P2.x-this.x)+(P1.y-this.y)*(P2.y-this.y);
-        // return Math.acos(scal/(dist(P1)+dist(P2)));
         double result = Math.atan2(P2.y - this.y, P2.x - this.x) -
                 Math.atan2(P1.y - this.y, P1.x - this.x);
         if(result < 0){
@@ -65,5 +62,13 @@ public class Coordinate {
         double c1c2 = c1.dist(c2);
         double s = (cc1 + cc2 + c1c2)/2;
         return Math.sqrt(s*(s-cc1)*(s-cc2)*(s-c1c2));
+    }
+
+    public double distanceToCoordinate(Coordinate other){
+        return Math.sqrt(Math.pow(this.x - other.getX(), 2) + Math.pow(this.y - other.getY(), 2));
+    }
+  
+    public double area(Coordinate P1, Coordinate P2){
+        return Math.abs(0.5*((P1.x-this.x)*(P2.y-this.y)-(P2.x-this.x)*(P1.y-this.y)));
     }
 }
