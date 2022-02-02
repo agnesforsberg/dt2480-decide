@@ -74,27 +74,32 @@ public class Decider{
          *  @return  Boolean representing if the condition is met or not.
          */
 
-        //No code to check if conditions to check 1 ≤ E PTS, 1 ≤ F PTS, or E PTS+F PTS ≤ NUMPOINTS−3.
-        // Code assumes this is true.
-
+        //Error handling
+        if((this.parameters.E_PTS + this.parameters.F_PTS > this.numpoints) || (this.parameters.E_PTS < 1) || (this.parameters.F_PTS < 1)){
+            return false;
+            //Maybe throw an error.
+        }
         if (this.numpoints < 5){ // The condition is not met when NUMPOINTS < 5
             return false;
         }
 
         boolean condition_met = false;      // Boolean to keep track if condition has been met.
         int e = this.parameters.E_PTS;      // Just a shorthand for convenience.
-        int f = this.parameters.E_PTS;      // Just a shorthand for convenience.
+        int f = this.parameters.F_PTS;      // Just a shorthand for convenience.
         double a, b, c, s, triangle_area;   // Used to keep calculation of the area of the Triangle readable.
 
 
         for(int i = 0; i <= this.numpoints-3-e-f && !condition_met; i++){ // Loop through all suitable points.
 
-            // Perform Horn's formula to calculate Area of Triangle
-            a = this.points[i].distanceToCoordinate(this.points[i+e]);
-            b = this.points[i].distanceToCoordinate(this.points[i+e+f]);
-            c = this.points[i+e].distanceToCoordinate(this.points[i+e+f]);
+            // Perform Heron's formula to calculate Area of Triangle
+            a = this.points[i].distanceToCoordinate(this.points[i+e+1]);
+            b = this.points[i].distanceToCoordinate(this.points[i+e+f+2]);
+            c = this.points[i+e+1].distanceToCoordinate(this.points[i+e+f+2]);
             s = (a + b + c)/2;
+
             triangle_area = Math.sqrt(s*(s - a)*(s - b)*(s - c));
+            System.out.println(a + " " + b + " " + c);
+            System.out.println(i + ", " + (i+e+1) + ", " + (i+e+f+2) + ": " + triangle_area);
 
             condition_met = (triangle_area > this.parameters.AREA1 || condition_met);
         }
