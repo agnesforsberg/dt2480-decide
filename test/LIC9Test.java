@@ -17,7 +17,7 @@ public class LIC9Test {
         points[1] = new Coordinate(-1, 1);
         points[2] = new Coordinate(-1, -1);
 
-        Decider decider = new Decider(3, points, params, new Connectors[3][3], new boolean[3][3]);
+        Decider decider = new Decider(3, points, params, new Connectors[15][15], new boolean[15][15], new boolean[15]);
         assertFalse(decider.lic9());
     }
 
@@ -33,7 +33,7 @@ public class LIC9Test {
         points[3] = new Coordinate(0, 0);
         points[4] = new Coordinate(5, 5);
 
-        Decider decider = new Decider(5, points, params, new Connectors[3][3], new boolean[3][3]);
+        Decider decider = new Decider(5, points, params, new Connectors[15][15], new boolean[15][15], new boolean[15]);
         assertFalse(decider.lic9());
     }
 
@@ -48,7 +48,7 @@ public class LIC9Test {
         points[3] = new Coordinate(0, 0);
         points[4] = new Coordinate(5, 5);
 
-        Decider decider = new Decider(5, points, params, new Connectors[3][3], new boolean[3][3]);
+        Decider decider = new Decider(5, points, params, new Connectors[15][15], new boolean[15][15], new boolean[15]);
         assertFalse(decider.lic9());
     }
 
@@ -66,7 +66,7 @@ public class LIC9Test {
 
         // Angle is PI/2, which is < PI-1
 
-        Decider decider = new Decider(5, points, params, new Connectors[3][3], new boolean[3][3]);
+        Decider decider = new Decider(5, points, params, new Connectors[15][15], new boolean[15][15], new boolean[15]);
         assertTrue(decider.lic9());
     }
 
@@ -85,7 +85,7 @@ public class LIC9Test {
 
         // Angle is PI/2, which is < PI-1
 
-        Decider decider = new Decider(6, points, params, new Connectors[3][3], new boolean[3][3]);
+        Decider decider = new Decider(6, points, params, new Connectors[15][15], new boolean[15][15], new boolean[15]);
         assertFalse(decider.lic9());
     }
 
@@ -106,7 +106,7 @@ public class LIC9Test {
 
         // Angle is PI/2, which is < PI-1
 
-        Decider decider = new Decider(8, points, params, new Connectors[3][3], new boolean[3][3]);
+        Decider decider = new Decider(8, points, params, new Connectors[15][15], new boolean[15][15], new boolean[15]);
         assertTrue(decider.lic9());
     }
 }

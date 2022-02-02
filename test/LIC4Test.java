@@ -18,7 +18,7 @@ public class LIC4Test {
         points[1] = new Coordinate(-1, 1);  // Quad 2
         points[2] = new Coordinate(-1, -1); // Quad 3
 
-        Decider decider = new Decider(3, points, params, new Connectors[3][3], new boolean[3][3]);
+        Decider decider = new Decider(3, points, params, new Connectors[3][3], new boolean[3][3], new boolean[15]);
         assertTrue(decider.lic4());
     }
 
@@ -30,7 +30,7 @@ public class LIC4Test {
         points[1] = new Coordinate(-1, 1);  // Quad 2
         points[2] = new Coordinate(1, 2); // Quad 1
 
-        Decider decider = new Decider(3, points, params, new Connectors[3][3], new boolean[3][3]);
+        Decider decider = new Decider(3, points, params, new Connectors[3][3], new boolean[3][3], new boolean[15]);
         assertFalse(decider.lic4());
     }
 
@@ -44,7 +44,7 @@ public class LIC4Test {
         points[3] = new Coordinate(1, 3); // Quad 1
         points[4] = new Coordinate(-1, -2); // Quad 3
 
-        Decider decider = new Decider(5, points, params, new Connectors[3][3], new boolean[3][3]);
+        Decider decider = new Decider(5, points, params, new Connectors[3][3], new boolean[3][3], new boolean[15]);
         assertFalse(decider.lic4());
     }
 
@@ -56,7 +56,7 @@ public class LIC4Test {
         points[1] = new Coordinate(-1, 0);  // Quad 2
         points[2] = new Coordinate(0, -1); // Quad 3
 
-        Decider decider = new Decider(3, points, params, new Connectors[3][3], new boolean[3][3]);
+        Decider decider = new Decider(3, points, params, new Connectors[3][3], new boolean[3][3], new boolean[15]);
         assertTrue(decider.lic4());
     }
 
@@ -71,7 +71,7 @@ public class LIC4Test {
         points[4] = new Coordinate(-1, 0);  // Quad 2
         points[5] = new Coordinate(0, -1); // Quad 3
 
-        Decider decider = new Decider(6, points, params, new Connectors[3][3], new boolean[3][3]);
+        Decider decider = new Decider(6, points, params, new Connectors[3][3], new boolean[3][3], new boolean[15]);
         assertTrue(decider.lic4());
     }
 
@@ -81,7 +81,7 @@ public class LIC4Test {
         Coordinate[] points = new Coordinate[1];
         points[0] = new Coordinate(1, 1);   // Quad 1
 
-        Decider decider = new Decider(1, points, params, new Connectors[3][3], new boolean[3][3]);
+        Decider decider = new Decider(1, points, params, new Connectors[3][3], new boolean[3][3], new boolean[15]);
         assertFalse(decider.lic4());
     }
 
@@ -94,7 +94,7 @@ public class LIC4Test {
         points[2] = new Coordinate(-1, -1); // Quad 3
 
 
-        Decider decider = new Decider(1, points, params, new Connectors[3][3], new boolean[3][3]);
+        Decider decider = new Decider(1, points, params, new Connectors[3][3], new boolean[3][3], new boolean[15]);
         assertFalse(decider.lic4());
     }
 }

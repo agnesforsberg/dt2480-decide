@@ -21,7 +21,7 @@ public class LIC14Test {
         points[4] = new Coordinate(0, 1);
 
         // Area is 1
-        Decider decider = new Decider(5, points, params, new Connectors[5][5], new boolean[5][5]);
+        Decider decider = new Decider(5, points, params, new Connectors[15][15], new boolean[15][15], new boolean[15]);
         assertTrue(decider.lic14());
     }
 
@@ -40,7 +40,7 @@ public class LIC14Test {
 
         // Area of points 0, 2, 4 is 2
         // Area of points 1, 3, 5 is 1
-        Decider decider = new Decider(6, points, params, new Connectors[6][6], new boolean[6][6]);
+        Decider decider = new Decider(6, points, params, new Connectors[15][15], new boolean[15][15], new boolean[15]);
         assertTrue(decider.lic14());
     }
 
@@ -54,7 +54,7 @@ public class LIC14Test {
         points[2] = new Coordinate(0, 0);
         points[3] = new Coordinate(0, 0);
 
-        Decider decider = new Decider(4, points, params, new Connectors[4][4], new boolean[4][4]);
+        Decider decider = new Decider(4, points, params, new Connectors[15][15], new boolean[15][15], new boolean[15]);
         assertFalse(decider.lic14());
     }
 
@@ -72,7 +72,7 @@ public class LIC14Test {
 
         // Area is 2
 
-        Decider decider = new Decider(4, points, params, new Connectors[4][4], new boolean[4][4]);
+        Decider decider = new Decider(4, points, params, new Connectors[15][15], new boolean[15][15], new boolean[15]);
         assertFalse(decider.lic14());
     }
 
@@ -89,7 +89,7 @@ public class LIC14Test {
         points[4] = new Coordinate(0, 1);
 
         // Area is 1
-        Decider decider = new Decider(4, points, params, new Connectors[4][4], new boolean[4][4]);
+        Decider decider = new Decider(4, points, params, new Connectors[15][15], new boolean[15][15], new boolean[15]);
         assertFalse(decider.lic14());
     }
 
@@ -106,7 +106,7 @@ public class LIC14Test {
         points[4] = new Coordinate(0, 0);
 
         // Area is 0
-        Decider decider = new Decider(4, points, params, new Connectors[4][4], new boolean[4][4]);
+        Decider decider = new Decider(4, points, params, new Connectors[15][15], new boolean[15][15], new boolean[15]);
         assertFalse(decider.lic14());
     }
 }

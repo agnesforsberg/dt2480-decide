@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class LIC8_Test {
-    @Test
+public class LIC13_Test {
+
 	@Test
 	void testLIC13_0() {
         //example that does not work because of first condition
@@ -23,10 +23,11 @@ public class LIC8_Test {
         points[4] = new Coordinate(2, 3);
         points[5] = new Coordinate(3, 3);
 
-        Decider decide = new Decider(6, points, p, new Connectors[6][6], new boolean[6][6]);
+        Decider decide = new Decider(6, points, p, new Connectors[6][6], new boolean[6][6], new boolean[6]);
 
         assertFalse(decide.lic13());
     }
+    @Test
     void testLIC13_1() {
         //example that does not work because of 2nd condition 
         Parameters p = new Parameters(0, 5, 0, 10, 0, 0, 0,
@@ -40,11 +41,11 @@ public class LIC8_Test {
         points[4] = new Coordinate(2, 40);
         points[5] = new Coordinate(3, 40);
 
-        Decider decide = new Decider(6, points, p, new Connectors[6][6], new boolean[6][6]);
+        Decider decide = new Decider(6, points, p, new Connectors[6][6], new boolean[6][6], new boolean[6]);
 
         assertFalse(decide.lic13());
     }
-
+    @Test
     void testLIC13_2() {
         //example that does work
         Parameters p = new Parameters(0, 5, 0, 10, 0, 0, 0,
@@ -58,7 +59,7 @@ public class LIC8_Test {
         points[4] = new Coordinate(10, 20);
         points[5] = new Coordinate(3, 3);
 
-        Decider decide = new Decider(6, points, p, new Connectors[6][6], new boolean[6][6]);
+        Decider decide = new Decider(6, points, p, new Connectors[6][6], new boolean[6][6], new boolean[6]);
 
         assertTrue(decide.lic13());
     }
