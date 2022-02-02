@@ -44,6 +44,17 @@ class CoordinateTest {
     }
 
     @Test
+    void coordinateInOrOnCircle(){
+        Coordinate c1_on_circle = new Coordinate(1, 0);
+        Coordinate c2_in_circle = new Coordinate(1, 1);
+        Coordinate c3_outside_circle = new Coordinate(2,2);
+
+        assertTrue(c1_on_circle.coordinateInOrOnCircle(1,1,1));
+        assertTrue(c2_in_circle.coordinateInOrOnCircle(1,1,1));
+        assertFalse(c3_outside_circle.coordinateInOrOnCircle(1,1,1));
+    }
+
+    @Test
     void Coordinate() {
         Coordinate c = new Coordinate(1, 2);
         assertEquals(c.getX(), 1);

@@ -41,7 +41,11 @@ public class Coordinate {
     public double distanceToCoordinate(Coordinate other){
         return Math.sqrt(Math.pow(this.x - other.getX(), 2) + Math.pow(this.y - other.getY(), 2));
     }
-  
+
+    public boolean coordinateInOrOnCircle(double radius, double center_x, double center_y){
+        return (((this.x - center_x)*(this.x - center_x)) + ((this.y - center_y)*(this.y - center_y))) <= (radius*radius);
+    }
+
     public double area(Coordinate P1, Coordinate P2){
         return Math.abs(0.5*((P1.x-this.x)*(P2.y-this.y)-(P2.x-this.x)*(P1.y-this.y)));
     }

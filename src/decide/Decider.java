@@ -42,8 +42,25 @@ public class Decider{
     }
 
     public boolean lic1(){
-        return true;
+        /**
+         * There exists at least one set of three consecutive data points that cannot all be contained
+         * within or on a circle of radius RADIUS1. (0 ≤ RADIUS1)
+         *
+         * @return Boolean representing if the condition is met or not.
+         */
+        boolean condition_met;
+        for(int i = 0; i < this.numpoints-2; i++){
+            double center_x = (double) (this.points[i].getX() +this.points[i+1].getX() + this.points[i+2].getX())/3;
+            double center_y = (double) (this.points[i].getY() +this.points[i+1].getY() + this.points[i+2].getY())/3;
+            condition_met = !(this.points[i].coordinateInOrOnCircle(this.parameters.RADIUS1, center_x, center_y) &&
+                    this.points[i+1].coordinateInOrOnCircle(this.parameters.RADIUS1, center_x, center_y) &&
+                    this.points[i+2].coordinateInOrOnCircle(this.parameters.RADIUS1, center_x, center_y));
+
+            if(condition_met) return true;
+        }
+        return false;
     }
+
 
     public boolean lic2(){
         boolean lic2_value = false;
@@ -231,7 +248,22 @@ radius RADIUS1. The condition is not met when NUMPOINTS < 5 */
     }
 
     public boolean lic11(){
-        return true;
+        /***
+         * There exists at least one set of two data points, (X[i],Y[i]) and (X[j],Y[j]), separated by
+         * exactly G PTS consecutive intervening points, such that X[j] - X[i] < 0. (where i < j ) The
+         * condition is not met when NUMPOINTS < 3.
+         * 1 ≤ G PTS ≤ NUMPOINTS−2
+         *
+         * @return Boolean representing if the condition is met or not.
+         */
+        if(this.numpoints < 3) return false;
+
+        boolean condition_met;
+        for(int i = 0; i < this.numpoints - (this.parameters.G_PTS + 1); i++){
+            condition_met = (this.points[i+ this.parameters.G_PTS+1].getX() - this.points[i].getX()) < 0;
+            if(condition_met) return true;
+        }
+        return false;
     }
 
     public boolean lic12(){
