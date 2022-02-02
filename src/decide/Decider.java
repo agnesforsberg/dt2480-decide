@@ -52,7 +52,22 @@ public class Decider{
     }
 
     public boolean lic7(){
-        return true;
+        boolean value_lic7 = false;
+        Coordinate P1;
+        Coordinate P2;
+        int i = 0;
+        if(this.parameters.K_PTS >= 1){
+            while(!false && i+ this.parameters.K_PTS  < this.numpoints -1){
+                P1 = this.points[i];
+                P2 = this.points[i+this.parameters.K_PTS +1];
+                if(P1.dist(P2) > this.parameters.LENGTH1){
+                    value_lic7 = true;
+                }
+                i++;
+            }
+        }
+        
+        return value_lic7;
     }
 
     public boolean lic8(){

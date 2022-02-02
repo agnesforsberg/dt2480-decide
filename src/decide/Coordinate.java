@@ -10,4 +10,8 @@ public class Coordinate {
     }
 
     // Add functions for points here
+
+    public double dist(Coordinate P){
+        return Math.sqrt(Math.pow(this.x - P.x, 2)+Math.pow(this.y - P.y, 2));
+    };
 }
