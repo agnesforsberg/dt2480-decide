@@ -153,7 +153,28 @@ with area greater than AREA1 */
     }
 
     public boolean lic12(){
-        return true;
+        boolean upper = false;
+        boolean lower = false;
+        Coordinate P1;
+        Coordinate P2;
+        int i = 0;
+        double distance;
+        if(this.parameters.K_PTS >= 1){
+            while(!(upper && lower) && i+ this.parameters.K_PTS  < this.numpoints -1){
+                P1 = this.points[i];
+                P2 = this.points[i+this.parameters.K_PTS +1];
+                distance = P1.dist(P2);
+                if(distance > this.parameters.LENGTH1){
+                    upper = true;
+                }
+                if(distance < this.parameters.LENGTH2){
+                    lower = true;
+                }
+                i++;
+            }
+        }
+        
+        return upper && lower;
     }
 
     public boolean lic13(){
