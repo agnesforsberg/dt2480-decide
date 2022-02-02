@@ -41,6 +41,7 @@ public class LIC3_Test {
 
         Decider decide = new Decider(5, points, test_params, new Connectors[5][5], new boolean[5][5], new boolean[5]);
 
+
         assertTrue(decide.lic3());
     }
 
