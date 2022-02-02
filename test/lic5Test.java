@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class lic5Test {
 
     @Test
-    void lic5_test0() {
+    void lic5_test_condition_met_on_last_point() {
         Parameters test_param = new Parameters(2.0,3.0,3.0,1.0,1,2,3.0,
                 4, 4, 6, 7,4,5,6,5,4,3.0,2.0,3.0);
 
@@ -24,7 +24,7 @@ class lic5Test {
     }
 
     @Test
-    void lic5_test1() {
+    void lic5_test_condition_met_early() {
         Parameters test_param = new Parameters(2.0,3.0,3.0,1.0,1,2,3.0,
                 4, 4, 6, 7,4,5,6,5,4,3.0,2.0,3.0);
 
@@ -40,7 +40,7 @@ class lic5Test {
     }
 
     @Test
-    void lic5_test2() {
+    void lic5_test_condition_not_met() {
         Parameters test_param = new Parameters(2.0,3.0,3.0,1.0,1,2,3.0,
                 4, 4, 6, 7,4,5,6,5,4,3.0,2.0,3.0);
 
