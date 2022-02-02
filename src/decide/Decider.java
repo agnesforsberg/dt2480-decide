@@ -212,7 +212,22 @@ radius RADIUS1. The condition is not met when NUMPOINTS < 5 */
     }
 
     public boolean lic11(){
-        return true;
+        /***
+         * There exists at least one set of two data points, (X[i],Y[i]) and (X[j],Y[j]), separated by
+         * exactly G PTS consecutive intervening points, such that X[j] - X[i] < 0. (where i < j ) The
+         * condition is not met when NUMPOINTS < 3.
+         * 1 ≤ G PTS ≤ NUMPOINTS−2
+         *
+         * @return Boolean representing if the condition is met or not.
+         */
+        if(this.numpoints < 3) return false;
+
+        boolean condition_met;
+        for(int i = 0; i < this.numpoints - (this.parameters.G_PTS + 1); i++){
+            condition_met = (this.points[i+ this.parameters.G_PTS+1].getX() - this.points[i].getX()) < 0;
+            if(condition_met) return true;
+        }
+        return false;
     }
 
     public boolean lic12(){
