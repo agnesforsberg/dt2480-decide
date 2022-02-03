@@ -22,7 +22,7 @@ public class LIC6_Test {
         test_points[4] = new Coordinate(0, 0);
         test_points[5] = new Coordinate(0, 0);
 
-        Decider test_decider = new Decider(6, test_points, test_param, new Connectors[6][6],new boolean[6][6]);
+        Decider test_decider = new Decider(6, test_points, test_param, new Connectors[6][6],new boolean[6][6], new boolean[15]);
 
         assertTrue(test_decider.lic6());
     }
@@ -40,7 +40,7 @@ public class LIC6_Test {
         test_points[4] = new Coordinate(1, 10);
         test_points[5] = new Coordinate(3, 1);
 
-        Decider test_decider = new Decider(6, test_points, test_param, new Connectors[6][6],new boolean[6][6]);
+        Decider test_decider = new Decider(6, test_points, test_param, new Connectors[6][6],new boolean[6][6], new boolean[15]);
 
         assertTrue(test_decider.lic6());
     }
@@ -58,7 +58,7 @@ public class LIC6_Test {
         test_points[4] = new Coordinate(1, 2);
         test_points[5] = new Coordinate(3, 1);
 
-        Decider test_decider = new Decider(6, test_points, test_param, new Connectors[6][6],new boolean[6][6]);
+        Decider test_decider = new Decider(6, test_points, test_param, new Connectors[6][6],new boolean[6][6], new boolean[15]);
 
         assertTrue(test_decider.lic6());
     }
@@ -76,7 +76,7 @@ public class LIC6_Test {
         test_points[4] = new Coordinate(0, 11);
         test_points[5] = new Coordinate(0, 2);
 
-        Decider test_decider = new Decider(6, test_points, test_param, new Connectors[6][6],new boolean[6][6]);
+        Decider test_decider = new Decider(6, test_points, test_param, new Connectors[6][6],new boolean[6][6], new boolean[15]);
 
         assertTrue(test_decider.lic6());
     }
@@ -90,7 +90,7 @@ public class LIC6_Test {
         test_points[0] = new Coordinate(0, 1);
         test_points[1] = new Coordinate(1, 10);
 
-        Decider test_decider = new Decider(2, test_points, test_param, new Connectors[2][2],new boolean[2][2]);
+        Decider test_decider = new Decider(2, test_points, test_param, new Connectors[15][15],new boolean[15][15], new boolean[15]);
 
         assertFalse(test_decider.lic6());
     }
@@ -108,7 +108,7 @@ public class LIC6_Test {
         test_points[4] = new Coordinate(0, 0);
         test_points[5] = new Coordinate(0, 0);
 
-        Decider test_decider = new Decider(6, test_points, test_param, new Connectors[6][6],new boolean[6][6]);
+        Decider test_decider = new Decider(6, test_points, test_param, new Connectors[6][6],new boolean[6][6], new boolean[15]);
 
         assertFalse(test_decider.lic6());
     }
@@ -126,7 +126,7 @@ public class LIC6_Test {
         test_points[4] = new Coordinate(0, 3);
         test_points[5] = new Coordinate(0, 0);
 
-        Decider test_decider = new Decider(6, test_points, test_param, new Connectors[6][6],new boolean[6][6]);
+        Decider test_decider = new Decider(6, test_points, test_param, new Connectors[6][6],new boolean[6][6], new boolean[15]);
 
         assertFalse(test_decider.lic6());
     }

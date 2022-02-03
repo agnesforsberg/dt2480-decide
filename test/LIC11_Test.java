@@ -24,7 +24,7 @@ public class LIC11_Test {
         test_points[6] = new Coordinate(6, 10);
         test_points[7] = new Coordinate(5, 1);
 
-        Decider test_decider = new Decider(8, test_points, test_param, new Connectors[8][8], new boolean[8][8]);
+        Decider test_decider = new Decider(8, test_points, test_param, new Connectors[15][15], new boolean[15][15], new boolean[15]);
 
         assertTrue(test_decider.lic11());
     }
@@ -44,7 +44,7 @@ public class LIC11_Test {
         test_points[6] = new Coordinate(6, 10);
         test_points[7] = new Coordinate(1, 1);
 
-        Decider test_decider = new Decider(8, test_points, test_param, new Connectors[8][8], new boolean[8][8]);
+        Decider test_decider = new Decider(8, test_points, test_param, new Connectors[8][8], new boolean[8][8], new boolean[15]);
 
         assertTrue(test_decider.lic11());
     }
@@ -58,7 +58,7 @@ public class LIC11_Test {
         test_points[0] = new Coordinate(5, 3);
         test_points[1] = new Coordinate(2, 2);
 
-        Decider test_decider = new Decider(2, test_points, test_param, new Connectors[2][2], new boolean[2][2]);
+        Decider test_decider = new Decider(2, test_points, test_param, new Connectors[15][15], new boolean[15][15], new boolean[15]);
 
         assertFalse(test_decider.lic11());
     }
@@ -78,7 +78,7 @@ public class LIC11_Test {
         test_points[6] = new Coordinate(7, 10);
         test_points[7] = new Coordinate(8, 1);
 
-        Decider test_decider = new Decider(8, test_points, test_param, new Connectors[8][8], new boolean[8][8]);
+        Decider test_decider = new Decider(8, test_points, test_param, new Connectors[15][15], new boolean[15][15], new boolean[15]);
 
         assertFalse(test_decider.lic11());
     }

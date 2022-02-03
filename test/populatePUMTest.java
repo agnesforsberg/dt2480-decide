@@ -30,9 +30,9 @@ public class populatePUMTest {
         points_zero[3] = new Coordinate(1, 0);
         points_zero[4] = new Coordinate(1, 85);
 
-        Decider decide = new Decider(5, points_zero, test_params_zero, lcm, new boolean[15][15]);
+        Decider decide = new Decider(5, points_zero, test_params_zero, lcm, new boolean[15][15], new boolean[15]);
 
-        assertTrue(true, true); // Dummy Assertion
+        assertTrue(true); // Dummy Assertion
 
     }
 }
