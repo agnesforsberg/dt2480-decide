@@ -61,7 +61,7 @@ public class DeciderTest {
         boolean[] puv = setup_puv();
 
         // Only length1, epsilon and area1 matters. Since only LIC0, LIC2 and LIC3 will be used (based on the puv and lcm).
-        Parameters test_params = new Parameters(4, 1, 2.0, 3.0, 34, 12, 3.4,
+        Parameters test_params = new Parameters(4, 1, 1.0, 3.0, 34, 12, 3.4,
                 5, 4, 3, 2, 1, 4, 3, 2, 5, 2.03, 4.34, 3.4);
 
         Coordinate[] points = new Coordinate[3];
