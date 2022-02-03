@@ -59,6 +59,7 @@ public class Decider{
         this.cmv[12] = lic12();
         this.cmv[13] = lic13();
         this.cmv[14] = lic14();
+        
     }
 
     public void populatePUM(){
@@ -82,7 +83,7 @@ public class Decider{
          */
 
         for(int i = 0; i <= 14; i++){ // Loop through LCM.
-            for(int j = i; i <= 14; i++){
+            for(int j = i; j <= 14; j++){
                 switch(this.lcm[i][j]){ // Switch to do the proper operations &&, || or auto true.
                     case ANDD:
                         this.pum[i][j] = (this.cmv[i] && this.cmv[j]);
@@ -103,6 +104,8 @@ public class Decider{
                 this.pum[j][i] = this.pum[i][j]; //Symetrize Matrix
             }
         }
+
+
     }
 
     public boolean launch(){
