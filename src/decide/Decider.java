@@ -160,7 +160,7 @@ public class Decider{
 
         for(int i = 0; i <= this.numpoints-2 && !condition_met; i++){ // Loop through all Coordinates in points[]
             //compare distance between all points i and i+1.
-            condition_met = ((this.points[i].distanceToCoordinate(this.points[i+1]) > this.parameters.LENGTH1) || condition_met);
+            condition_met = ((this.points[i].dist(this.points[i+1]) > this.parameters.LENGTH1) || condition_met);
         }
         return condition_met;
     }
@@ -222,7 +222,7 @@ with area greater than AREA1 */
             P1 = this.points[i];
             P2 = this.points[i + 1];
             P3 = this.points[i + 2];
-            double a = P1.area(P2,P3);
+            double a = P1.triangleArea(P2,P3);
             if (a>=this.parameters.AREA1) {
                 condition = true;
             }
@@ -326,7 +326,7 @@ with area greater than AREA1 */
             }
             else{
                 for(int j = i+1; j < i+this.parameters.N_PTS-1; j++){
-                    distance = this.points[j].distanceToCoordinate(this.points[i]);
+                    distance = this.points[j].dist(this.points[i]);
                     condition_met = distance > this.parameters.DIST;
                     if(condition_met) return true;
                 }
@@ -395,7 +395,7 @@ radius RADIUS1. The condition is not met when NUMPOINTS < 5 */
                 R=Math.max(a, Math.max(b, c))/2;
             }
             else{           // acute angle case , we compute the radius of the circumscribed circle
-                R=a*b*c/(4*P1.area(P2,P3));
+                R=a*b*c/(4*P1.triangleArea(P2,P3));
             }
             if (R>this.parameters.RADIUS1){
                 condition=true;
@@ -469,20 +469,17 @@ radius RADIUS1. The condition is not met when NUMPOINTS < 5 */
         boolean condition_met = false;      // Boolean to keep track if condition has been met.
         int e = this.parameters.E_PTS;      // Just a shorthand for convenience.
         int f = this.parameters.F_PTS;      // Just a shorthand for convenience.
-        double a, b, c, s, triangle_area;   // Used to keep calculation of the area of the Triangle readable.
+        Coordinate a, b, c;
+        double triangle_area;   // Used to keep calculation of the area of the Triangle readable.
 
 
         for(int i = 0; i <= this.numpoints-3-e-f && !condition_met; i++){ // Loop through all suitable points.
 
-            // Perform Heron's formula to calculate Area of Triangle
-            a = this.points[i].distanceToCoordinate(this.points[i+e+1]);
-            b = this.points[i].distanceToCoordinate(this.points[i+e+f+2]);
-            c = this.points[i+e+1].distanceToCoordinate(this.points[i+e+f+2]);
-            s = (a + b + c)/2;
+            a = this.points[i];
+            b = this.points[i+e+1];
+            c = this.points[i+e+f+2];
 
-            triangle_area = Math.sqrt(s*(s - a)*(s - b)*(s - c));
-            System.out.println(a + " " + b + " " + c);
-            System.out.println(i + ", " + (i+e+1) + ", " + (i+e+f+2) + ": " + triangle_area);
+            triangle_area = a.triangleArea(b, c);
 
             condition_met = (triangle_area > this.parameters.AREA1 || condition_met);
         }
@@ -577,7 +574,7 @@ circle of radius RADIUS2. Both parts must be true for the LIC to be true. */
                 R=Math.max(a, Math.max(b, c))/2;
             }
             else{
-                R=a*b*c/(4*P1.area(P2,P3));
+                R=a*b*c/(4*P1.triangleArea(P2,P3));
             }
             if (R>this.parameters.RADIUS1){
                 condition1=true;

@@ -38,9 +38,9 @@ class CoordinateTest {
         Coordinate c2 = new Coordinate(0, 0);
         Coordinate c3 = new Coordinate(1, 0);
 
-        assertEquals(c1.distanceToCoordinate(c2), 1.4142135623730951);
-        assertEquals(c2.distanceToCoordinate(c3), 1.0);
-        assertEquals(c2.distanceToCoordinate(c2), 0.0);
+        assertEquals(c1.dist(c2), 1.4142135623730951);
+        assertEquals(c2.dist(c3), 1.0);
+        assertEquals(c2.dist(c2), 0.0);
     }
 
     @Test
