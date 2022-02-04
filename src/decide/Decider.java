@@ -632,4 +632,9 @@ circle of radius RADIUS2. Both parts must be true for the LIC to be true. */
 
         return firstCriteria && secondCriteria;
     }
+
+    //Getters
+    public boolean[][] getPum() {
+        return pum;
+    }
 }
