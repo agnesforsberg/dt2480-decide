@@ -20,5 +20,8 @@ The system works by evaluating 15 conditions, or LICs (launch Interceptor Condit
 - LIC 0, 5 and 10 and the associated tests and auxiliary functions needed.
 - decide, CMV and PUM methods.
 
+#### Nicolas Wittmann
+- LIC 3, 8, 13 and the associated tests and auxiliary functions needed.
+
 ## Way of Working:
 Our way of working is “In Place”. Indeed, we have selected our tools and practices. The group used a Slack channel for all main communication and used different channels to organize the discussions. For instance a general channel for discussion or a meeting channel to know when the next meeting was scheduled. The Project was managed with GitHub. Initially, each member got a set of issues to work on. The group then created branches associated with each issue and just worked on resolving each issue.  When an issue was resolved, a pull request was created and the project’s leader evaluated the code and requested changes if needed. When it came to the project leader’s code, the leader assigned someone else to review their contribution in order to have another point of view. With this method of work, everyone was able to get feedback on their code either directly on GitHub or through a Slack discussion. In order to go to the next step, we need to improve our practices a bit in order to avoid some merge conflict and use a bit more these practices and tools in order to make them more natural. 
